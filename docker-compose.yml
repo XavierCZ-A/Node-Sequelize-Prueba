@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+
+  postgres-db:
+    image: postgres:15.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: investments
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres-db
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgres://postgres:password@postgres-db:5432/investments 
