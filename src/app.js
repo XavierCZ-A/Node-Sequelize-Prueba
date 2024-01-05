@@ -5,13 +5,16 @@ import opportunitiesRoutes from './routes/opportunities.route.js';
 import investmentRoutes from './routes/investments.route.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import { Frontend_URL } from './config/envs.js';
 
 export const app = express();
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost",
     credentials: true
-}))
+}));
+
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));

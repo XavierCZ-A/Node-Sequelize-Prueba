@@ -8,4 +8,5 @@ export const DB_NAME = process.env.DATABASE_NAME
 export const DB_PORT = process.env.DATABASE_PORT
 export const PORT = process.env.PORT
 export const JWT_SECRET = process.env.JWT_SECRET
+export const Frontend_URL=process.env.Frontend_URL || 'http://localhost'
 
